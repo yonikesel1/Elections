@@ -1,4 +1,4 @@
-import "./globals.css";
+import "../styles/globals.css";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -12,4 +12,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="bg-neutral-100 text-neutral-900">{children}</body>
     </html>
   );
-} 
+}

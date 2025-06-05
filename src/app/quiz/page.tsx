@@ -3,12 +3,13 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import SliderField from "@/components/SliderField";
+import SliderField from "../../components/SliderField";
 
 const schema = z.object({
-  security: z.number().min(0).max(100),
-  socioEconomic: z.number().min(0).max(100),
-  religious: z.number().min(0).max(100),
+  /* coerce strings → numbers so validation doesn't block submit */
+  security: z.coerce.number().min(0).max(100),
+  socioEconomic: z.coerce.number().min(0).max(100),
+  religious: z.coerce.number().min(0).max(100),
 });
 type FormValues = z.infer<typeof schema>;
 

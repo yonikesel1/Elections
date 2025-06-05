@@ -1,4 +1,4 @@
-import { parties, Party } from "@/data/parties";
+import { parties, Party } from "../data/parties";
 
 export interface Answers {
   security: number;
