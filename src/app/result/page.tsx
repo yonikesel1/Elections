@@ -2,6 +2,7 @@
 import { matchParty } from "../../lib/matchParty";
 import { parties } from "../../data/parties";
 import { notFound } from "next/navigation";
+import { saveResponse } from "../../lib/saveResponse";
 
 function parseParam(p?: string): number | null {
   const n = Number(p);
@@ -20,6 +21,13 @@ export default function ResultPage({
   if (security === null || socioEconomic === null || religious === null) return notFound();
 
   const party = matchParty({ security, socioEconomic, religious });
+
+  // fire-and-forget — no UI blocking
+  void saveResponse({
+    security,
+    socio_economic: socioEconomic,
+    religious,
+  });
 
   const others = parties
     .filter((p) => p.id !== party.id)
