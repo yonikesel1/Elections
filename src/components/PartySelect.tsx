@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { parties } from "../data/parties";
 
 interface Props {
@@ -15,7 +16,7 @@ export default function PartySelect({ value, onChange }: Props) {
     >
       <option value="">בחר/י מפלגה</option>
       {parties.map((p) => (
-        <option key={p.id} value={p.id}>
+        <option key={p.id} value={p.id} style={{ backgroundImage: `url(${p.logo})` }}>
           {p.name}
         </option>
       ))}

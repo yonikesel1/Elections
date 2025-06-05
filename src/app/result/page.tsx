@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Image from "next/image";
 import { matchParty } from "../../lib/matchParty";
 import { saveResponse } from "../../lib/saveResponse";
 import PartySelect from "../../components/PartySelect";
@@ -39,8 +40,9 @@ export default function ResultPage() {
     <div className="mx-auto max-w-md space-y-6 p-4">
       <h2 className="text-2xl font-semibold text-center">התוצאה שלך</h2>
 
-      <div className="rounded-2xl bg-neutral-100 p-4 shadow">
-        <p className="text-center text-xl font-bold text-brand-600">{party.name}</p>
+      <div className="rounded-2xl bg-neutral-100 p-6 shadow flex flex-col items-center gap-4">
+        <Image src={party.logo} alt={party.name} width={64} height={64} />
+        <p className="text-xl font-bold text-brand-600">{party.name}</p>
       </div>
 
       <div className="space-y-4 rounded bg-neutral-100 p-4">
