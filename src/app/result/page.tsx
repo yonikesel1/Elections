@@ -1,50 +1,39 @@
 "use client";
+import { useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { matchParty } from "../../lib/matchParty";
-import { parties } from "../../data/parties";
-import { notFound } from "next/navigation";
 import { saveResponse } from "../../lib/saveResponse";
+import PartySelect from "../../components/PartySelect";
 
-function parseParam(p?: string): number | null {
-  const n = Number(p);
+function parseNum(v: string | null): number | null {
+  const n = Number(v);
   return Number.isFinite(n) ? Math.min(Math.max(n, 0), 100) : null;
 }
 
-export default function ResultPage({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
-  const security = parseParam(searchParams.s as string);
-  const socioEconomic = parseParam(searchParams.e as string);
-  const religious = parseParam(searchParams.r as string);
+export default function ResultPage() {
+  const router = useRouter();
+  const sp = useSearchParams();
+  const [selected, setSelected] = useState<string | "">("");
 
-  if (security === null || socioEconomic === null || religious === null) return notFound();
+  const security = parseNum(sp.get("s"));
+  const socioEconomic = parseNum(sp.get("e"));
+  const religious = parseNum(sp.get("r"));
+
+  if (security === null || socioEconomic === null || religious === null) {
+    return <p className="p-4">פרמטרים חסרים – נסה/י שוב.</p>;
+  }
 
   const party = matchParty({ security, socioEconomic, religious });
 
-  // fire-and-forget — no UI blocking
-  void saveResponse({
-    security,
-    socio_economic: socioEconomic,
-    religious,
-  });
-
-  const others = parties
-    .filter((p) => p.id !== party.id)
-    .sort((a, b) => a.name.localeCompare(b.name));
-
-  const handleShare = async () => {
-    try {
-      if (navigator.share) {
-        await navigator.share({ url: window.location.href });
-      } else {
-        await navigator.clipboard.writeText(window.location.href);
-        alert("הקישור הועתק ללוח");
-      }
-    } catch (err) {
-      console.error("Failed to share:", err);
-    }
-  };
+  async function handleSubmit(intended: string | null) {
+    await saveResponse({
+      security: security as number,
+      socio_economic: socioEconomic as number,
+      religious: religious as number,
+      intended_vote: intended,
+    });
+    router.push("/stats");
+  }
 
   return (
     <div className="mx-auto max-w-md space-y-6 p-4">
@@ -54,21 +43,23 @@ export default function ResultPage({
         <p className="text-center text-xl font-bold text-brand-600">{party.name}</p>
       </div>
 
-      <details className="rounded bg-neutral-100 p-4">
-        <summary className="cursor-pointer select-none">פירוט מלא של הדירוג</summary>
-        <ul className="mt-2 list-disc px-4 space-y-1">
-          {others.map((p) => (
-            <li key={p.id}>{p.name}</li>
-          ))}
-        </ul>
-      </details>
+      <div className="space-y-4 rounded bg-neutral-100 p-4">
+        <p className="font-medium text-center">לאיזו מפלגה את/ה מתכנן/ת להצביע?</p>
+        <PartySelect value={selected} onChange={setSelected} />
 
-      <button
-        onClick={handleShare}
-        className="w-full rounded-lg bg-brand-600 py-3 text-white hover:opacity-90 transition"
-      >
-        שתף/י את התוצאה
-      </button>
+        <div className="flex gap-2">
+          <button
+            className="flex-1 rounded-lg bg-brand-600 py-2 text-white disabled:opacity-40"
+            disabled={!selected}
+            onClick={() => handleSubmit(selected)}
+          >
+            שלח/י
+          </button>
+          <button className="flex-1 rounded-lg border py-2" onClick={() => handleSubmit(null)}>
+            דלג/י
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
