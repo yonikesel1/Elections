@@ -1,5 +1,6 @@
-import { matchParty } from "@/lib/matchParty";
-import { parties } from "@/data/parties";
+"use client";
+import { matchParty } from "../../lib/matchParty";
+import { parties } from "../../data/parties";
 import { notFound } from "next/navigation";
 
 function parseParam(p?: string): number | null {
@@ -24,6 +25,19 @@ export default function ResultPage({
     .filter((p) => p.id !== party.id)
     .sort((a, b) => a.name.localeCompare(b.name));
 
+  const handleShare = async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({ url: window.location.href });
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        alert("הקישור הועתק ללוח");
+      }
+    } catch (err) {
+      console.error("Failed to share:", err);
+    }
+  };
+
   return (
     <div className="mx-auto max-w-md space-y-6 p-4">
       <h2 className="text-2xl font-semibold text-center">התוצאה שלך</h2>
@@ -42,10 +56,7 @@ export default function ResultPage({
       </details>
 
       <button
-        onClick={() =>
-          navigator.share?.({ url: window.location.href }) ??
-          navigator.clipboard.writeText(window.location.href)
-        }
+        onClick={handleShare}
         className="w-full rounded-lg bg-brand-600 py-3 text-white hover:opacity-90 transition"
       >
         שתף/י את התוצאה
