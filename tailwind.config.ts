@@ -1,9 +1,17 @@
 import type { Config } from "tailwindcss";
 
-export default {
-  content: ["./src/**/*.{ts,tsx}"],
+const config: Config = {
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
   theme: {
     extend: {
+      borderRadius: {
+        xl: "1rem",
+        "3xl": "1.5rem",
+      },
       colors: {
         brand: {
           100: "#E6F0FA",
@@ -18,4 +26,6 @@ export default {
     preflight: true,
   },
   darkMode: ["class"],
-} satisfies Config; 
+} satisfies Config;
+
+export default config; 

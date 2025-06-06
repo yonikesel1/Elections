@@ -1,15 +1,14 @@
-import "../styles/globals.css";
-import type { Metadata } from "next";
+"use client";
 
-export const metadata: Metadata = {
-  title: "בחירות בקליק",
-  description: "מגלים איזו מפלגה מתאימה לדעות שלך",
-};
+import "./globals.css";
+import ClientLayout from "./ClientLayout";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="he" dir="rtl">
-      <body className="bg-neutral-100 text-neutral-900">{children}</body>
+      <body className="bg-gradient-to-b from-brand-100 to-white text-neutral-900 min-h-screen">
+        <ClientLayout>{children}</ClientLayout>
+      </body>
     </html>
   );
 }
