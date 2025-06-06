@@ -2,7 +2,7 @@
 
 export const dynamic = "force-dynamic"; // disable prerendering
 
-import { useState } from "react";
+import { useState, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 import { matchParty } from "../../lib/matchParty";
@@ -14,7 +14,7 @@ function parseNum(v: string | null): number | null {
   return Number.isFinite(n) ? Math.min(Math.max(n, 0), 100) : null;
 }
 
-export default function ResultPage() {
+function ResultContent() {
   const router = useRouter();
   const sp = useSearchParams();
   const [selected, setSelected] = useState<string | "">("");
@@ -66,5 +66,13 @@ export default function ResultPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function ResultPage() {
+  return (
+    <Suspense fallback={<div className="p-4">טוען...</div>}>
+      <ResultContent />
+    </Suspense>
   );
 }
