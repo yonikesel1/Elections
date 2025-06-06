@@ -1,4 +1,11 @@
+/* ---------------------------------------------------------------------------------
+   This route depends on runtime query-string values, so we treat it as a purely
+   Client Component and disable prerendering in production builds.
+--------------------------------------------------------------------------------- */
 "use client";
+
+export const dynamic = "force-dynamic"; // ⬅ ensures it never gets prerendered
+
 import { useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
