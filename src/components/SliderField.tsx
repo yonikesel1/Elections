@@ -16,12 +16,6 @@ interface Props {
   maxLabel: string;
 }
 
-const extremes = {
-  security: { left: "שמאל", right: "ימין" },
-  socioEconomic: { left: "שמאל", right: "ימין" }, // econ spectrum
-  religious: { left: "חילוני", right: "דתי" },
-} as const;
-
 const explanations = {
   security: "0 = שמאל, גישה פייסנית • 100 = ימין, גישה תקיפה",
   socioEconomic: "0 = מדינת רווחה • 100 = שוק חופשי",
