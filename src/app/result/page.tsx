@@ -40,7 +40,7 @@ export default function ResultPage() {
     <div className="mx-auto max-w-md space-y-6 p-4">
       <h2 className="text-2xl font-semibold text-center">התוצאה שלך</h2>
 
-      <div className="rounded-2xl bg-neutral-100 p-6 shadow flex flex-col items-center gap-4">
+      <div className="rounded-3xl bg-neutral-100 p-6 shadow-lg flex flex-col items-center gap-4">
         <Image src={party.logo} alt={party.name} width={64} height={64} />
         <p className="text-xl font-bold text-brand-600">{party.name}</p>
       </div>
