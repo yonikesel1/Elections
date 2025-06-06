@@ -1,5 +1,4 @@
 "use client";
-
 export const dynamic = "force-dynamic"; // disable prerendering
 
 import { useState } from "react";
