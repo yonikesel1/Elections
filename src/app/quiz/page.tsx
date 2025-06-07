@@ -34,27 +34,9 @@ export default function QuizPage() {
       <h2 className="text-2xl font-semibold text-center">הזז/י את הסליידרים</h2>
 
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-        <SliderField
-          name="security"
-          label="ביטחון"
-          control={control}
-          minLabel="ימין"
-          maxLabel="שמאל"
-        />
-        <SliderField
-          name="socioEconomic"
-          label="חברתי-כלכלי"
-          control={control}
-          minLabel="ימין"
-          maxLabel="שמאל"
-        />
-        <SliderField
-          name="religious"
-          label="דתי"
-          control={control}
-          minLabel="דתי"
-          maxLabel="חילוני"
-        />
+        <SliderField name="security" label="ביטחון" control={control} />
+        <SliderField name="socioEconomic" label="חברתי-כלכלי" control={control} />
+        <SliderField name="religious" label="דתי" control={control} />
 
         <button
           type="submit"

@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      screens: {
+        sm: "480px",
+      },
       borderRadius: {
         xl: "1rem",
         "3xl": "1.5rem",
