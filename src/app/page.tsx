@@ -4,11 +4,11 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center gap-6 p-4">
       <h1 className="text-3xl font-bold text-brand-600 text-center">
-        באיזו מפלגה הדעות שלך באמת מסתדרות?
+        איזו מפלגה באמת מייצגת את הדעות שלך?
       </h1>
       <p className="max-w-md text-center">
-        ענה על שלוש שאלות מהירות ותגלה מהי המפלגה הקרובה ביותר להשקפת העולם שלך.
-        הנתונים אנונימיים לחלוטין.
+        מקם את עמדתך בכל אחד משלושת התחומים ותגלה מהי המפלגה הקרובה ביותר להשקפת העולם שלך. הנתונים
+        אנונימיים לחלוטין.
       </p>
       <Link
         href="/quiz"
