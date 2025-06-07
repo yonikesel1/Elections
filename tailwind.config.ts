@@ -9,7 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       screens: {
-        sm: "480px",
+        mob: "480px",
       },
       borderRadius: {
         xl: "1rem",

@@ -31,6 +31,9 @@ export default function SliderField({ name, label, control }: Props) {
     <div className="space-y-3">
       <label className="font-medium">{label}</label>
 
+      {/* Current value display */}
+      <div className="text-center text-sm font-medium text-brand-600">{currentValue}</div>
+
       <Controller
         name={name}
         control={control}
@@ -42,12 +45,13 @@ export default function SliderField({ name, label, control }: Props) {
             step={1}
             value={field.value}
             onChange={(e) => field.onChange(Number(e.target.value))}
-            className="w-full accent-brand-600 md:h-2"
+            className="w-full accent-brand-600 mob:h-2"
             dir="ltr" /* keep 0 on the LEFT even in RTL */
           />
         )}
       />
 
+      {/* extreme labels */}
       <div className="flex justify-between text-xs text-neutral-500">
         <span>{extremes[name].left}</span>
         <span>{extremes[name].right}</span>
