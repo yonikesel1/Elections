@@ -34,6 +34,7 @@ function ResultContent() {
       socio_economic: socioEconomic as number,
       religious: religious as number,
       intended_vote: intended,
+      final_party: party.id,
     });
     router.push("/stats");
   }
@@ -43,7 +44,13 @@ function ResultContent() {
       <h2 className="text-2xl font-semibold text-center">התוצאה שלך</h2>
 
       <div className="rounded-3xl bg-neutral-100 p-6 shadow-lg flex flex-col items-center gap-4">
-        <Image src={party.logo} alt={party.name} width={64} height={64} />
+        <Image
+          src={party.logo}
+          alt={party.name}
+          width={64}
+          height={64}
+          className="rounded-full border border-white shadow object-cover aspect-square"
+        />
         <p className="text-xl font-bold text-brand-600">{party.name}</p>
       </div>
 

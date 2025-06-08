@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="20" cy="20" r="19" fill="#E5E7EB" stroke="#6B7280" stroke-width="2"/>
+  
+  <!-- Ballot box -->
+  <rect x="12" y="14" width="16" height="12" rx="2" fill="#4B5563"/>
+  
+  <!-- Ballot slot -->
+  <rect x="14" y="10" width="12" height="4" rx="1" fill="#4B5563"/>
+  
+  <!-- Checkmark -->
+  <path d="M16 20L19 23L24 18" stroke="#E5E7EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg> 

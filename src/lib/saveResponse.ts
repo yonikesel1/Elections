@@ -5,6 +5,7 @@ interface Payload {
   socio_economic: number;
   religious: number;
   intended_vote?: string | null;
+  final_party: string;
 }
 
 export async function saveResponse(payload: Payload) {
