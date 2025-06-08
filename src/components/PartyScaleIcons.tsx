@@ -32,7 +32,7 @@ export default function PartyScaleIcons({ axis, current }: { axis: Axis; current
                 alt={p.name}
                 width={40}
                 height={40}
-                className={`rounded-full border border-white shadow transition
+                className={`rounded-full border border-white shadow transition aspect-square object-cover
                   ${closestIds.includes(p.id) ? "ring-2 ring-brand-600" : "opacity-80"}`}
               />
             </MobilePopover>

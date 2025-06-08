@@ -1,14 +1,34 @@
+"use client";
 import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 
-const StatsCharts = dynamic(() => import("../../components/StatsCharts"), {
+const PartyHistogram = dynamic(() => import("../../components/PartyHistogram"), {
   ssr: false,
 });
 
 export default function StatsPage() {
+  const [me, setMe] = useState({
+    security: 50,
+    socioEconomic: 50,
+    religious: 50,
+  });
+
+  useEffect(() => {
+    try {
+      const saved = JSON.parse(localStorage.getItem("myAnswers") || "{}");
+      if (saved.security) setMe(saved);
+    } catch {
+      // ignore JSON parse errors
+    }
+  }, []);
+
   return (
-    <main className="mx-auto max-w-4xl p-4 space-y-6">
-      <h2 className="text-2xl font-semibold text-center">פילוח התשובות</h2>
-      <StatsCharts />
+    <main className="mx-auto max-w-6xl space-y-12 p-4">
+      {/* Histograms */}
+      <section className="space-y-8">
+        <PartyHistogram type="party_id" title="תוצאות הסליידרים" />
+        <PartyHistogram type="intended_vote" title="תוצאות הבחירה" />
+      </section>
     </main>
   );
 }

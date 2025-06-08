@@ -4,7 +4,7 @@ export interface Party {
   security: number;
   socioEconomic: number;
   religious: number;
-  logo: string; // '/parties/{id}.svg'
+  logo: string; // '/leaders/{leader}.jpg'
 }
 
 export const parties: Party[] = [
@@ -14,7 +14,7 @@ export const parties: Party[] = [
     security: 80,
     socioEconomic: 65,
     religious: 70,
-    logo: "/parties/likud.svg",
+    logo: "/leaders/netanyahu.jpg",
   },
   {
     id: "yesh_atid",
@@ -22,7 +22,7 @@ export const parties: Party[] = [
     security: 70,
     socioEconomic: 75,
     religious: 30,
-    logo: "/parties/yesh_atid.svg",
+    logo: "/leaders/lapid.jpg",
   },
   {
     id: "machane_mamlachti",
@@ -30,7 +30,7 @@ export const parties: Party[] = [
     security: 75,
     socioEconomic: 70,
     religious: 35,
-    logo: "/parties/machane_mamlachti.svg",
+    logo: "/leaders/beny_gantz.png",
   },
   {
     id: "shas",
@@ -38,7 +38,7 @@ export const parties: Party[] = [
     security: 60,
     socioEconomic: 40,
     religious: 95,
-    logo: "/parties/shas.svg",
+    logo: "/leaders/deri.jpg",
   },
   {
     id: "yahadut_hatora",
@@ -46,7 +46,7 @@ export const parties: Party[] = [
     security: 50,
     socioEconomic: 30,
     religious: 100,
-    logo: "/parties/yahadut_hatora.svg",
+    logo: "/leaders/gafni.jpg",
   },
   {
     id: "tzionut_datit",
@@ -54,7 +54,7 @@ export const parties: Party[] = [
     security: 85,
     socioEconomic: 50,
     religious: 90,
-    logo: "/parties/tzionut_datit.svg",
+    logo: "/leaders/smotrich.jpg",
   },
   {
     id: "otzma_yehudit",
@@ -62,7 +62,7 @@ export const parties: Party[] = [
     security: 95,
     socioEconomic: 55,
     religious: 80,
-    logo: "/parties/otzma_yehudit.svg",
+    logo: "/leaders/ben_gvir.jpg",
   },
   {
     id: "israel_beitenu",
@@ -70,23 +70,15 @@ export const parties: Party[] = [
     security: 90,
     socioEconomic: 60,
     religious: 20,
-    logo: "/parties/israel_beitenu.svg",
+    logo: "/leaders/lieberman.jpg",
   },
   {
-    id: "haavoda",
-    name: "העבודה",
-    security: 60,
-    socioEconomic: 80,
-    religious: 30,
-    logo: "/parties/haavoda.svg",
-  },
-  {
-    id: "meretz",
-    name: "מרצ",
-    security: 40,
-    socioEconomic: 85,
-    religious: 20,
-    logo: "/parties/meretz.svg",
+    id: "hademokratim",
+    name: "הדמוקרטים",
+    security: 65,
+    socioEconomic: 75,
+    religious: 25,
+    logo: "/leaders/golan.jpg",
   },
   {
     id: "hadash_taal",
@@ -94,7 +86,7 @@ export const parties: Party[] = [
     security: 30,
     socioEconomic: 70,
     religious: 40,
-    logo: "/parties/hadash_taal.svg",
+    logo: "/leaders/ayman_odeh.jpg",
   },
   {
     id: "raam",
@@ -102,7 +94,7 @@ export const parties: Party[] = [
     security: 40,
     socioEconomic: 40,
     religious: 90,
-    logo: "/parties/raam.svg",
+    logo: "/leaders/abbas.jpg",
   },
   {
     id: "balad",
@@ -110,7 +102,7 @@ export const parties: Party[] = [
     security: 15,
     socioEconomic: 25,
     religious: 30,
-    logo: "/parties/balad.svg",
+    logo: "/leaders/shehadeh.jpg",
   },
   {
     id: "bennett2026",
@@ -118,6 +110,6 @@ export const parties: Party[] = [
     security: 90,
     socioEconomic: 65,
     religious: 80,
-    logo: "/parties/bennett2026.svg",
+    logo: "/leaders/bennett.jpg",
   },
 ];
